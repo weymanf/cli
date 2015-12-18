@@ -2,6 +2,7 @@ package command_runner
 
 import (
 	"errors"
+
 	. "github.com/cloudfoundry/cli/cf/i18n"
 	"github.com/cloudfoundry/cli/cf/terminal"
 
@@ -29,6 +30,7 @@ func NewRunner(cmdFactory command_factory.Factory, requirementsFactory requireme
 
 func (runner ConcreteRunner) RunCmdByName(cmdName string, c *cli.Context) error {
 	cmd, err := runner.cmdFactory.GetByCmdName(cmdName)
+	return err
 	if err != nil {
 		runner.ui.Say(T("Error finding command {{.CmdName}}\n", map[string]interface{}{"CmdName": cmdName}))
 		return err

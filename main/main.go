@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"strings"
 
+	"../cf/yolo"
 	"github.com/cloudfoundry/cli/cf/api"
 	"github.com/cloudfoundry/cli/cf/app"
 	"github.com/cloudfoundry/cli/cf/command_factory"
@@ -74,6 +75,12 @@ func main() {
 				if !r.Execute() {
 					os.Exit(1)
 				}
+			}
+
+			if os.Getenv("CF_YOLO") == "true" {
+				fmt.Printf("\nDUDDUDUDUDUDUDUDUU\n")
+				darude := yolo.Yolo{}
+				darude.Activate()
 			}
 
 			cfCmd.Execute(fc)
